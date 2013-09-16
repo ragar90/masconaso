@@ -3,5 +3,6 @@ class Team < ActiveRecord::Base
 	has_many :competitions
 	has_many :leagues, through: :competitions
 	has_many :signings
-	has_many :players, throug: :signings
+	has_many :players, through: :signings
+	belongs_to :captain, class_name: "Player"
 end

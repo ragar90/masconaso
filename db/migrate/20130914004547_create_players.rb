@@ -9,6 +9,7 @@ class CreatePlayers < ActiveRecord::Migration
       t.integer :city_id
       t.string :phone
       t.text :description
+      t.boolean :is_active
 
       t.timestamps
     end

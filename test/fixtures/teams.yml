@@ -3,11 +3,9 @@
 one:
   name: MyString
   sport_id: 1
-  picture: MyString
-  description: MyText
+  description: MyString
 
 two:
   name: MyString
   sport_id: 1
-  picture: MyString
-  description: MyText
+  description: MyString
