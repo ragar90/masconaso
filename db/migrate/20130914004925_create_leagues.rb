@@ -3,8 +3,8 @@ class CreateLeagues < ActiveRecord::Migration
     create_table :leagues do |t|
       t.string :name
       t.integer :sport_id
-      t.integer :city_id
-
+      t.integer :residence_id
+      t.string :residence_type
       t.timestamps
     end
   end

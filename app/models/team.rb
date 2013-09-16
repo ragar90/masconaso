@@ -5,4 +5,6 @@ class Team < ActiveRecord::Base
 	has_many :signings
 	has_many :players, through: :signings
 	belongs_to :captain, class_name: "Player"
+	has_many :inscriptions
+	has_many :tournaments, through: :inscriptions
 end

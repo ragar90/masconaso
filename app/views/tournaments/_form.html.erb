@@ -1,0 +1,57 @@
+<%= form_for(@tournament) do |f| %>
+  <% if @tournament.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tournament.errors.count, "error") %> prohibited this tournament from being saved:</h2>
+
+      <ul>
+      <% @tournament.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :start_date %><br>
+    <%= f.datetime_select :start_date %>
+  </div>
+  <div class="field">
+    <%= f.label :inscriptions_start %><br>
+    <%= f.datetime_select :inscriptions_start %>
+  </div>
+  <div class="field">
+    <%= f.label :inscriptions_deadline %><br>
+    <%= f.datetime_select :inscriptions_deadline %>
+  </div>
+  <div class="field">
+    <%= f.label :is_oppen %><br>
+    <%= f.check_box :is_oppen %>
+  </div>
+  <div class="field">
+    <%= f.label :league_id %><br>
+    <%= f.number_field :league_id %>
+  </div>
+  <div class="field">
+    <%= f.label :city_id %><br>
+    <%= f.number_field :city_id %>
+  </div>
+  <div class="field">
+    <%= f.label :state_id %><br>
+    <%= f.number_field :state_id %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :inscription_cost %><br>
+    <%= f.text_field :inscription_cost %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

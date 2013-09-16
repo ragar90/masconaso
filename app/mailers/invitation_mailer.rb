@@ -1,5 +1,5 @@
 class InvitationMailer < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "no-reply@masconaso.com"
   def team_invitation(signing,team)
   	@team = team
   	@captain = team.captain

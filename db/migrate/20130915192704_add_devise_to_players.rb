@@ -53,7 +53,7 @@ class AddDeviseToPlayers < ActiveRecord::Migration
       t.remove :current_sign_in_ip
       t.remove :last_sign_in_ip
     end
-    remove_index :players, :email
-    remove_index :players, :reset_password_token
+    #remove_index :players, :email
+    #remove_index :players, :reset_password_token
   end
 end

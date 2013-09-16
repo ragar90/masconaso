@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130915225602) do
+ActiveRecord::Schema.define(version: 20130916072018) do
 
   create_table "cities", force: true do |t|
     t.string   "name"
@@ -29,6 +29,15 @@ ActiveRecord::Schema.define(version: 20130915225602) do
 
   create_table "countries", force: true do |t|
     t.string   "name"
+    t.string   "iso"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "inscriptions", force: true do |t|
+    t.integer  "team_id"
+    t.integer  "tournament_id"
+    t.string   "state"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -36,7 +45,8 @@ ActiveRecord::Schema.define(version: 20130915225602) do
   create_table "leagues", force: true do |t|
     t.string   "name"
     t.integer  "sport_id"
-    t.integer  "city_id"
+    t.integer  "residence_id"
+    t.string   "residence_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -46,7 +56,13 @@ ActiveRecord::Schema.define(version: 20130915225602) do
     t.integer  "team2_id"
     t.integer  "team1_results"
     t.string   "team2_results"
+    t.boolean  "confirmed"
     t.datetime "dateted_to"
+    t.string   "place"
+    t.string   "map_latlng"
+    t.string   "map_zoom"
+    t.string   "is_cancel",     default: "0"
+    t.integer  "tournament_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -80,8 +96,8 @@ ActiveRecord::Schema.define(version: 20130915225602) do
   create_table "signings", force: true do |t|
     t.integer  "player_id"
     t.integer  "team_id"
-    t.boolean  "confirmed"
-    t.datetime "invitation_sent_at"
+    t.boolean  "confirmed",     default: false
+    t.string   "contact_email"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -89,6 +105,7 @@ ActiveRecord::Schema.define(version: 20130915225602) do
   create_table "sports", force: true do |t|
     t.string   "name"
     t.string   "acronym"
+    t.integer  "maximun_signings", default: 10
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -96,6 +113,7 @@ ActiveRecord::Schema.define(version: 20130915225602) do
   create_table "states", force: true do |t|
     t.string   "name"
     t.integer  "country_id"
+    t.string   "iso"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -104,6 +122,23 @@ ActiveRecord::Schema.define(version: 20130915225602) do
     t.string   "name"
     t.integer  "sport_id"
     t.string   "description"
+    t.integer  "captain_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tournaments", force: true do |t|
+    t.string   "name"
+    t.datetime "start_date"
+    t.datetime "inscriptions_start"
+    t.datetime "inscriptions_deadline"
+    t.boolean  "is_open"
+    t.integer  "league_id"
+    t.integer  "city_id"
+    t.integer  "state_id"
+    t.text     "description"
+    t.float    "inscription_cost"
+    t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  start_date: 2013-09-16 00:53:35
+  inscriptions_start: 2013-09-16 00:53:35
+  inscriptions_deadline: 2013-09-16 00:53:35
+  is_oppen: false
+  league_id: 1
+  city_id: 1
+  state_id: 1
+  description: MyText
+  inscription_cost: 1.5
+
+two:
+  name: MyString
+  start_date: 2013-09-16 00:53:35
+  inscriptions_start: 2013-09-16 00:53:35
+  inscriptions_deadline: 2013-09-16 00:53:35
+  is_oppen: false
+  league_id: 1
+  city_id: 1
+  state_id: 1
+  description: MyText
+  inscription_cost: 1.5

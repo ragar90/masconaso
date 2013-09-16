@@ -3,6 +3,9 @@ class Signing < ActiveRecord::Base
 	belongs_to :player
 
 	def self.massive_invitation(signings, team)
+		if team.signings_ids == team.sport.maximun_signings
+			return false
+		end
 		signings.each do |signing|
 			unless signing[:id]
 				self.create(player_id:signing[:id], team_id:team.id, contact_email: signing[:email])
