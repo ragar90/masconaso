@@ -5,6 +5,7 @@ class CreateTeams < ActiveRecord::Migration
       t.integer :sport_id
       t.string :description
       t.integer :captain_id
+      t.integer :city_id
       t.timestamps
     end
   end

@@ -7,4 +7,6 @@ class Team < ActiveRecord::Base
 	belongs_to :captain, class_name: "Player"
 	has_many :inscriptions
 	has_many :tournaments, through: :inscriptions
+  validates :name,:captain_id, :presence=>true
+  
 end

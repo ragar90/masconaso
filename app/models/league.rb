@@ -4,4 +4,5 @@ class League < ActiveRecord::Base
 	has_many :teams, through: :competitions
 	belongs_to :sport
 	has_many :tournaments
+  validates :name, :presence=>true
 end

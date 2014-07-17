@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 20130916072018) do
     t.string   "map_zoom"
     t.string   "is_cancel",     default: "0"
     t.integer  "tournament_id"
+    t.integer  "parent_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -123,6 +124,7 @@ ActiveRecord::Schema.define(version: 20130916072018) do
     t.integer  "sport_id"
     t.string   "description"
     t.integer  "captain_id"
+    t.integer  "city_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
