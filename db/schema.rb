@@ -11,20 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130916072018) do
+ActiveRecord::Schema.define(version: 20150315054202) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "cities", force: true do |t|
     t.string   "name"
     t.integer  "state_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "competitions", force: true do |t|
-    t.integer  "team_id"
-    t.integer  "league_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.float    "lattitude"
+    t.float    "longitude"
   end
 
   create_table "countries", force: true do |t|
@@ -45,10 +43,9 @@ ActiveRecord::Schema.define(version: 20130916072018) do
   create_table "leagues", force: true do |t|
     t.string   "name"
     t.integer  "sport_id"
-    t.integer  "residence_id"
-    t.string   "residence_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "city_id"
   end
 
   create_table "matches", force: true do |t|
@@ -61,7 +58,7 @@ ActiveRecord::Schema.define(version: 20130916072018) do
     t.string   "place"
     t.string   "map_latlng"
     t.string   "map_zoom"
-    t.string   "is_cancel",     default: "0"
+    t.string   "is_cancel",     default: "f"
     t.integer  "tournament_id"
     t.integer  "parent_id"
     t.datetime "created_at"
@@ -89,6 +86,10 @@ ActiveRecord::Schema.define(version: 20130916072018) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "oauth_token"
+    t.datetime "oauth_expires_at"
   end
 
   add_index "players", ["email"], name: "index_players_on_email", unique: true, using: :btree
@@ -97,6 +98,7 @@ ActiveRecord::Schema.define(version: 20130916072018) do
   create_table "signings", force: true do |t|
     t.integer  "player_id"
     t.integer  "team_id"
+    t.integer  "sport_id"
     t.boolean  "confirmed",     default: false
     t.string   "contact_email"
     t.datetime "created_at"
@@ -127,6 +129,7 @@ ActiveRecord::Schema.define(version: 20130916072018) do
     t.integer  "city_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "league_id"
   end
 
   create_table "tournaments", force: true do |t|
@@ -136,8 +139,6 @@ ActiveRecord::Schema.define(version: 20130916072018) do
     t.datetime "inscriptions_deadline"
     t.boolean  "is_open"
     t.integer  "league_id"
-    t.integer  "city_id"
-    t.integer  "state_id"
     t.text     "description"
     t.float    "inscription_cost"
     t.string   "type"

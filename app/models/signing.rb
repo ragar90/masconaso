@@ -7,7 +7,7 @@ class Signing < ActiveRecord::Base
 	validates :player_id, uniqueness: { scope: :sport_id, message: "No puedes fichar a este jugador porque ya juega con otro equipo" }
 	
 	def maximun_signings
-		signings = class.where(team_id: self.team_id).count
+		signings = Signing.where(team_id: self.team_id).count
 		max_signings = self.team.sport.maximun_signings
 		unless signings < max_signings
 		 	errors.add(:team_id, "No puedes fichar mas jugadores del limite permitido, el limite es #{max_signings}")

@@ -4,7 +4,7 @@ class HomeController < ApplicationController
   		redirect_to my_locker_path
   	else
   		respond_to do |format|
-  			format.html{layout: false,}
+  			format.html{render layout: false}
   		end
   	end
   end

@@ -4,7 +4,7 @@ Masconaso::Application.routes.draw do
   root 'home#index'
   get "home/about_us"
   get "home/terms"
-  devise_for :players, controllers: {:registrations => "players"}
+  devise_for :players, controllers: {:registrations => "players", :omniauth_callbacks => "players"}
   resources :players, only: [:show] do
   	resources :teams
     resources :leagues

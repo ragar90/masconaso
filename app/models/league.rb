@@ -1,8 +1,7 @@
 class League < ActiveRecord::Base
-	belongs_to :residence, polymorphic: true
-	has_many :competitions
-	has_many :teams, through: :competitions
+	belongs_to :city
 	belongs_to :sport
+	has_many :teams
 	has_many :tournaments
   validates :name, :presence=>true
 end
